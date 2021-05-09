@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>Hello Pierina!</h1>
-
+    <p> I am not a robot, I swear!</p>
   </div>
 </template>
 
