@@ -1,5 +1,6 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+  <h1>Hello world!</h1>
   <GetData/>
 
 </template>
