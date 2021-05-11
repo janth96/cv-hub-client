@@ -1,17 +1,19 @@
 <template>
-  <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <h1>Hello world!</h1>
-  <GetData/>
-
+  <Nav/>
+  <router-view/>
 </template>
 
 <script>
-import GetData from './components/api_test/GetData.vue'
+import Nav from "./Nav"
 
 export default {
   name: 'App',
   components: {
-    GetData
+    Nav,
+  },
+  mounted () {
+    console.log('app mounted');
   }
 }
 </script>

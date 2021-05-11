@@ -9,12 +9,13 @@ export default {
     recievedData: state => state.recievedData,
   },
   mutations: {
-    SET_RECIEVED_DATA(state, data) {
-      state.recievedData = data
+    SET_RECIEVED_DATA(state, payload) {
+      state.recievedData = payload
     },
   },
   actions: {
     recieveData({ commit }) {
+      commit("SET_RECIEVED_DATA", "loading...")
       return new Promise((resolve, reject) => {
         axios
           .get("/resumes").then(response => {
