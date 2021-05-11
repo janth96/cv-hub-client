@@ -1,0 +1,24 @@
+// This file is made up following this configuration (ITCSS):
+
+// Settings: Global configurations such as colors and fonts
+// Tools: Mixins and functions
+// Generic: Resets and normalizing styles
+// HTML elements: Styles for HTML tags
+// Objects: Objects with no visuals -> This is the first layer which uses class selectors (OOCSS, so blueprints for common things)
+// Components: Well designed components (specific stuff)
+// Trumps: Overrides such as '.hidden'
+
+// Media queries should go with the component they affect, and not just in one layer.
+
+@import "./settings.scss";
+@import "./tools.scss";
+@import "./generic.scss";
+@import "./elements.scss";
+@import "./objects.scss";
+@import "./components.scss";
+@import "./trumps.scss";
+
+
+#app {
+  background-color: green;
+}
