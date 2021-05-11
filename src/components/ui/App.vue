@@ -1,15 +1,19 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>Hello world!</h1>
+  <Nav/>
+  <router-view/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Nav from "./Nav"
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Nav,
+  },
+  mounted () {
+    console.log('app mounted');
   }
 }
 </script>
