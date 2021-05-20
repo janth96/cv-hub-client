@@ -1,11 +1,6 @@
-// module.exports = {
-//   css: {
-//     loaderOptions: {
-//       scss: {
-//         prependData: `
-//           @import "@/assets/sass/app.scss"
-//         `
-//       }
-//     }
-//   }
-// }
+module.exports = {
+  // options...
+  devServer: {
+        proxy: 'https://localhost:8000/',
+    }
+}

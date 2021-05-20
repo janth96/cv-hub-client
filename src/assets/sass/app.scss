@@ -10,6 +10,7 @@
 
 // Media queries should go with the component they affect, and not just in one layer.
 
+@import "./colours.scss";
 @import "./settings.scss";
 @import "./tools.scss";
 @import "./generic.scss";
@@ -17,8 +18,3 @@
 @import "./objects.scss";
 @import "./components.scss";
 @import "./trumps.scss";
-
-
-#app {
-  background-color: green;
-}
