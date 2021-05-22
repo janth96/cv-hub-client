@@ -27,8 +27,10 @@ export default {
         email: this.email,
         password: this.password,
       }).then(() => {
+        // TODO when user enters wrong credentials, token is set to empty string, then redirected to home...
         this.$router.push({ name: "home" })
       }).catch(error => {
+        // Show error
         console.error(error)
       })
     }

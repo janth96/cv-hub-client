@@ -5,14 +5,16 @@ import axios from "axios"
 
 import api_test from "./modules/api_test"
 import auth from "./modules/auth"
+import errors from "./modules/errors"
 
-// axios.defaults.baseURL = "http://localhost:8000/api"
-axios.defaults.baseURL = "https://cv-hub-api-zvz66.ondigitalocean.app/api"
+axios.defaults.baseURL = "http://localhost:8000/api"
+// axios.defaults.baseURL = "https://cv-hub-api-zvz66.ondigitalocean.app/api"
 
 export default createStore({
   modules: {
     api_test,
     auth,
+    errors,
   },
   // router: {
   //

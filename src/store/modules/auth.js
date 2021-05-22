@@ -49,9 +49,11 @@ export default {
           "email": credentials.email,
           "password": credentials.password,
         }).then(response => {
+          console.log(response.data);
           commit('SET_TOKEN', response.data)
-          resolve()
+          resolve(response)
         }).catch(error => {
+          console.log(error.response.data.message);
           reject(error)
         })
       })
