@@ -1,9 +1,12 @@
 <template>
-  <div class="">
-    <h1>This is the account page</h1>
+  <section class="">
+    <h1>Your account</h1>
     <p v-if="user == null">Loading...</p>
-    <p v-else>{{ user }}</p>
-  </div>
+    <ul v-else>
+      <li>Name: {{ user.name }}</li>
+      <li>Email: {{ user.email }}</li>
+    </ul>
+  </section>
 </template>
 <script>
 import {mapGetters} from 'vuex'

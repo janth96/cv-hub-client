@@ -31,12 +31,6 @@ export default {
           "email": credentials.email,
           "password": credentials.password,
         }).then(response => {
-          // dispatch("login", {
-          //   "email": credentials.email,
-          //   "password": credentials.password,
-          // }).catch(error => {
-          //   reject(error)
-          // })
           resolve(response)
         }).catch(error => {
           reject(error)
@@ -45,15 +39,25 @@ export default {
     },
     login({ commit }, credentials) {
       return new Promise ((resolve, reject) => {
+
+        // Show loading toast
+        commit("SET_TOAST", { heading: "loading...", type: "loading", content: "" })
+
+        // Send login request
         axios.post('/login', {
           "email": credentials.email,
           "password": credentials.password,
-        }).then(response => {
-          console.log(response.data);
-          commit('SET_TOKEN', response.data)
+        })
+        .then(response => {
+          // Save token and remove toast
+          commit('SET_TOKEN', response.data.token)
+          commit("RESET_TOAST")
           resolve(response)
-        }).catch(error => {
-          console.log(error.response.data.message);
+        })
+        .catch(error => {
+          // Set errors and remove toast
+          commit("RESET_TOAST")
+          commit('SET_ERRORS', {email: error.response.data.message})
           reject(error)
         })
       })

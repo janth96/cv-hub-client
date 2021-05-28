@@ -1,5 +1,5 @@
 import { createWebHistory, createRouter } from "vue-router"
-import GetData from "@/components/api_test/GetData.vue"
+import store from "../store/store"
 import HelloWorld from "@/components/HelloWorld.vue"
 import Register from "@/components/auth/Register.vue"
 import Login from "@/components/auth/Login.vue"
@@ -28,11 +28,6 @@ const routes = [
     component: Logout,
   },
   {
-    path: "/api_test",
-    name: "api_test",
-    component: GetData,
-  },
-  {
     path: "/",
     name: "home",
     component: HelloWorld,
@@ -42,6 +37,12 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes
+})
+
+router.beforeEach(() => {
+  // Remove all errors and toasts
+  store.commit("RESET_TOAST")
+  store.commit("RESET_ERRORS")
 })
 
 export default router
