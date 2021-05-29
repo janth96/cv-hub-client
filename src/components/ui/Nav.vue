@@ -13,8 +13,6 @@
         <router-link :to="{ name: 'login' }">Login</router-link>
       </div>
     </transition>
-    <!-- <transition name="slide-bottom-to-top" mode="out-in"> -->
-    <!-- </transition> -->
   </nav>
 </template>
 

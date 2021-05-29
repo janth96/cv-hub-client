@@ -71,6 +71,8 @@ export default {
       })
     },
     getUser({ state, commit }) {
+
+      // Reset store
       commit("SET_USER", null)
       axios.defaults.headers.common["Authorization"] = "Bearer " + state.token
 

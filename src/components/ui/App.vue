@@ -38,7 +38,7 @@ export default {
         this.transitionName = "logout"
         return
       }
-      //TODO change second condition to check if page requires user to be logged in
+      // When user logs in, use login transition
       if(from.name == "login" && to.meta.requiresAuth == true) {
         this.transitionName = "login"
         return
