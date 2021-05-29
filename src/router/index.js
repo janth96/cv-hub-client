@@ -21,7 +21,7 @@ const routes = [
     component: Login,
     meta: {
       requiresAuth: false
-    }
+    },
   },
   {
     path: "/account",

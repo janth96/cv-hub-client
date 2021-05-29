@@ -66,10 +66,14 @@ export default {
   data() {
     return {
       show: false,
-      name: "test",
-      email: "e@e.e",
-      password: "asdf",
-      confirmPassword: "asdf",
+      // name: "test",
+      // email: "e@e.e",
+      // password: "1234567890",
+      // confirmPassword: "1234567890",
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
     }
   },
   mounted() {
@@ -85,34 +89,45 @@ export default {
     register() {
       // Check if password is the same
       if(this.password != this.confirmPassword) {
-        console.log(false);
-        this.$store.commit("SET_ERRORS", {password: "Please make sure that the passwords match"})
+        this.$store.commit("SET_ERRORS", {password: ["Please make sure that the passwords match"]})
         this.$refs.password.focus()
         return
       }
-      console.log(true);
+
+      // Credentials on front-end are OK
       this.$store.dispatch("register", {
         name: this.name,
         email: this.email,
         password: this.password,
       }).then(() => {
+
+        // Log in user, then redirect to account page
         this.$store.dispatch("login", {
           email: this.email,
           password: this.password
         }).then (() => {
-          this.$router.push({ name: "home" })
-        }).catch(error => {
-          console.error(error);
+          this.$router.push({ name: "account" })
+        }).catch(() => {
         })
+
       }).catch(error => {
+
         // In case email has already been taken, notify user with link to login
         if(error.response.data.errors.email == "The email has already been taken.") {
-          // TODO link to login page when clicked
-          this.$store.commit("SET_TOAST", { heading: "Account already exists", type: "loading", content: "Go to login?"})
+          this.$store.commit("SET_TOAST", {
+            heading: "Account already exists",
+            type: "loading",
+            content: "",
+            to: {
+              name: "login",
+              params: {
+                email: this.email
+              }
+            }
+          })
         }
 
         // Else, show errors
-        console.log(error.response.data.errors);
         this.$store.commit("SET_ERRORS", error.response.data.errors)
 
       })

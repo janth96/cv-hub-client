@@ -22,7 +22,7 @@
         </ul>
         <ul class="form__actions">
           <li>
-            <button type="submit" name="button" :disabled="this.loginButtonStatus">Login</button>
+            <button type="submit" name="button" :disabled="this.loginButtonDisabled">Login</button>
           </li>
         </ul>
       </form>
@@ -37,9 +37,10 @@ export default {
   data() {
     return {
       show: false,
-      email: "e@e.e",
-      password: "1234567890",
-      loginButtonStatus: false,
+      email: this.$route.params['email'] || "",
+      // email: this.$route.params['email'] || "e@e.e",
+      password: "",
+      loginButtonDisabled: false,
     }
   },
   mounted() {
@@ -53,14 +54,14 @@ export default {
   },
   methods: {
     login() {
-      this.loginButtonStatus = true
+      this.loginButtonDisabled = true
       this.$store.dispatch("login", {
         email: this.email,
         password: this.password,
       }).then(() => {
         this.$router.push({ name: "account" })
       }).catch(() => {
-        this.loginButtonStatus = false
+        this.loginButtonDisabled = false
         this.$refs.email.focus()
         this.password = ""
       })

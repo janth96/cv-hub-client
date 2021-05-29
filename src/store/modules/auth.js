@@ -77,7 +77,6 @@ export default {
       return new Promise((resolve, reject) => {
         axios.get('/me')
         .then(response => {
-          console.log(response.data);
           commit("SET_USER", response.data)
           resolve()
         }).catch(error => {

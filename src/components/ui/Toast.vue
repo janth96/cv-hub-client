@@ -3,6 +3,7 @@
     <div class="toast" v-if="toast.heading" :class="toast.type">
       <b>{{ toast.heading}}</b>
       <span>{{ toast.content }}</span>
+      <router-link v-if="toast.to" :to="{ name: toast.to.name, params: toast.to.params }"> Go to {{ toast.to.name }} page</router-link>
     </div>
   </transition>
 </template>
