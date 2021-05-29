@@ -133,3 +133,29 @@
   transform: scale(1.1);
   opacity: 0;
 }
+
+
+// Nav swith after login/logout
+.slide-bottom-to-top-enter-active,
+.slide-bottom-to-top-leave-active {
+  transition: all .2s ease;
+}
+
+.slide-bottom-to-top-enter-to,
+.slide-bottom-to-top-leave-from {
+  margin-top: 0;
+  margin-bottom: 0;
+  opacity: 1;
+}
+
+.slide-bottom-to-top-leave-to {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  opacity: 0;
+}
+
+.slide-bottom-to-top-enter-from {
+  margin-top: 10px;
+  margin-bottom: -10px;
+  opacity: 0;
+}
