@@ -1,40 +1,71 @@
 <template lang="html">
-  <div class="modal">
-    <form action="#" @submit.prevent="login" method="post">
-      <label for="email">Email:</label>
-      <input type="email" name="email" v-model="email">
-      <label for="password">Password:</label>
-      <input type="password" name="password" v-model="password">
-      <button type="submit" name="button">Login</button>
-    </form>
-  </div>
+  <section>
+    <transition name="slide-in-from-bottom" mode="out-in">
+      <form action="#" @submit.prevent="login" method="post" class="auth__form" v-if="this.show">
+        <ul class="form__fields">
+          <li>
+            <label for="email">Email:</label>
+            <input
+            type="email"
+            id="email"
+            v-model="email"
+            ref="email"
+            :class="{ error: errors.email }"
+            @blur="$store.commit('DELETE_ERROR', 'email')"
+            required>
+            <span class="validation__error" v-if="errors.email">{{ errors.email }}</span>
+          </li>
+          <li>
+            <label for="password">Password:</label>
+            <input type="password" id="password" v-model="password"  required>
+          </li>
+        </ul>
+        <ul class="form__actions">
+          <li>
+            <button type="submit" name="button" :disabled="this.loginButtonDisabled">Login</button>
+          </li>
+        </ul>
+      </form>
+    </transition>
+  </section>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  mounted() {
-    console.log('New component mounted.')
-  },
   data() {
     return {
-      email: "",
+      show: false,
+      email: this.$route.params['email'] || "",
+      // email: this.$route.params['email'] || "e@e.e",
       password: "",
+      loginButtonDisabled: false,
     }
+  },
+  mounted() {
+    this.show = true;
+    window.setTimeout(() => {
+      this.$refs.email.focus()
+    }, 50)
+  },
+  computed: {
+    ...mapGetters(['errors']),
   },
   methods: {
     login() {
+      this.loginButtonDisabled = true
       this.$store.dispatch("login", {
         email: this.email,
         password: this.password,
       }).then(() => {
-        this.$router.push({ name: "home" })
-      }).catch(error => {
-        console.error(error)
+        this.$router.push({ name: "account" })
+      }).catch(() => {
+        this.loginButtonDisabled = false
+        this.$refs.email.focus()
+        this.password = ""
       })
     }
   }
 }
 </script>
-
-<style lang="css">
-</style>

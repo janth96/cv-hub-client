@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <section></section>
 </template>
 <script>
 export default {
@@ -7,8 +7,8 @@ export default {
     // Wait for logout to finish
     this.$store.dispatch("logout")
     .then(() => {
-      // then redirect user to home page
-      this.$router.push({ name: "home" })
+      // Then redirect user to home page
+      this.$router.push({ name: "login" })
     })
   }
 }

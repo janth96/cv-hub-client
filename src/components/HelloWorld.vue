@@ -1,13 +1,13 @@
 <template lang="html">
-  <div class="component-wrapper">
+  <section class="component-wrapper">
     <h1>Hello world!</h1>
-  </div>
+  </section>
 </template>
 
 <script>
 export default {
   mounted() {
-    
+
   }
 }
 </script>

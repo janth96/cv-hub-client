@@ -1,0 +1,204 @@
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.form__fields {
+  width: 100%;
+  li {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px 20px 20px;
+    position:relative;
+
+    input, textarea, select {
+      height: 50px;
+      font-size: 1rem;
+      padding: 10px;
+      font-family: "Source-Sans-Pro-Regular";
+      border-radius: 5px;
+      background: white;
+      border: 1px solid $oc-gray-3;
+      box-shadow: 2px 2px 3px 2px $oc-gray-0;
+      transition: border ease-in-out .1s;
+      transition: padding ease-in-out .1s;
+
+      &:hover {
+        border: 1px solid $oc-gray-5;
+        box-shadow: 2px 2px 3px 2px $oc-gray-1;
+      }
+
+      &:focus {
+        border: 1.5px solid $oc-blue-7;
+        outline: none;
+        padding: 9.5px;
+      }
+
+      &:disabled {
+        color: $oc-gray-7;
+        border: 1px solid $oc-gray-3;
+        background: $oc-gray-0;
+      }
+
+      &.error {
+        border: 1.5px solid $oc-red-8;
+        padding: 9.5px;
+      }
+    }
+
+    .validation__error {
+      transform: translateY(80px);
+      position: absolute;
+      top: 0;
+      font-size: .9rem;
+      color: $oc-red-8;
+    }
+  }
+}
+
+.form__actions {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 20px;
+  justify-content: flex-end;
+}
+
+
+.auth__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 10px;
+  opacity: 1;
+  padding: 10px;
+  width: 90vw;
+  max-width: 1000px;
+  transform: translateX(-50%);
+  left: 50%;
+  z-index: 100;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &.loading {
+    background-color: $oc-gray-7;
+    color: white;
+  }
+
+  b {
+    margin-right: 10px;
+  }
+}
+
+// Animations
+.toast-enter-active,
+.toast-leave-active {
+  transition: all .2s ease;
+}
+
+.toast-enter-to,
+.toast-leave-from {
+  bottom: 10px;
+  opacity: 1;
+}
+
+.toast-leave-to,
+.toast-enter-from {
+  bottom: -50px;
+  opacity: 0;
+}
+
+
+// auth screens show
+.slide-in-from-bottom-enter-active,
+.slide-in-from-bottom-leave-active {
+  transition: all .4s ease;
+}
+
+.slide-in-from-bottom-enter-to,
+.slide-in-from-bottom-leave-from {
+  margin-top: 0;
+  margin-bottom: 0;
+  opacity: 1;
+}
+
+.slide-in-from-bottom-leave-to,
+.slide-in-from-bottom-enter-from {
+  margin-top: 50px;
+  margin-bottom: -50px;
+  opacity: 0;
+}
+
+
+// to logout
+.logout-enter-active,
+.logout-leave-active {
+  transition: all .2s ease;
+}
+
+.logout-enter-to,
+.logout-leave-from {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.logout-leave-to,
+.logout-enter-from {
+  transform: scale(.9);
+  opacity: 0;
+}
+
+
+// after login
+.login-enter-active,
+.login-leave-active {
+  transition: all .2s ease;
+}
+
+.login-enter-to,
+.login-leave-from {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.login-leave-to,
+.login-enter-from {
+  transform: scale(1.1);
+  opacity: 0;
+}
+
+
+// Nav swith after login/logout
+.slide-bottom-to-top-enter-active,
+.slide-bottom-to-top-leave-active {
+  transition: all .2s ease;
+}
+
+.slide-bottom-to-top-enter-to,
+.slide-bottom-to-top-leave-from {
+  margin-top: 0;
+  margin-bottom: 0;
+  opacity: 1;
+}
+
+.slide-bottom-to-top-leave-to {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  opacity: 0;
+}
+
+.slide-bottom-to-top-enter-from {
+  margin-top: 10px;
+  margin-bottom: -10px;
+  opacity: 0;
+}

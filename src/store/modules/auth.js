@@ -31,12 +31,6 @@ export default {
           "email": credentials.email,
           "password": credentials.password,
         }).then(response => {
-          // dispatch("login", {
-          //   "email": credentials.email,
-          //   "password": credentials.password,
-          // }).catch(error => {
-          //   reject(error)
-          // })
           resolve(response)
         }).catch(error => {
           reject(error)
@@ -45,13 +39,25 @@ export default {
     },
     login({ commit }, credentials) {
       return new Promise ((resolve, reject) => {
+
+        // Show loading toast
+        commit("SET_TOAST", { heading: "loading...", type: "loading", content: "" })
+
+        // Send login request
         axios.post('/login', {
           "email": credentials.email,
           "password": credentials.password,
-        }).then(response => {
-          commit('SET_TOKEN', response.data)
-          resolve()
-        }).catch(error => {
+        })
+        .then(response => {
+          // Save token and remove toast
+          commit('SET_TOKEN', response.data.token)
+          commit("RESET_TOAST")
+          resolve(response)
+        })
+        .catch(error => {
+          // Set errors and remove toast
+          commit("RESET_TOAST")
+          commit('SET_ERRORS', {email: error.response.data.message})
           reject(error)
         })
       })
@@ -65,13 +71,14 @@ export default {
       })
     },
     getUser({ state, commit }) {
+
+      // Reset store
       commit("SET_USER", null)
       axios.defaults.headers.common["Authorization"] = "Bearer " + state.token
 
       return new Promise((resolve, reject) => {
         axios.get('/me')
         .then(response => {
-          console.log(response.data);
           commit("SET_USER", response.data)
           resolve()
         }).catch(error => {

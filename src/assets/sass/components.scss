@@ -1,58 +1,42 @@
 .top__bar {
-  // position: absolute;
-  // top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   width: 100vw;
-  background-color: $oc-orange-1;
+  font-size: 1rem;
 
+  .logo {
+    margin: .6rem 1rem;
+    padding: .6rem 1rem;
+    background: $oc-indigo-7;
+    color: white;
+    font-family: "Source-Sans-Pro-Bold";
+    border-radius: 5px;
+  }
 
-  // .nav__blue {
-  //   display: flex;
-  //   align-items: center;
-  //   background-color: $oc-blue-5;
-  //   height: 60px;
-  //   // z-index: 3;
-  //   button {
-  //     box-shadow: unset;
-  //   }
-  // }
-  //
-  // .nav__orange {
-  //   background-color: $oc-orange-5;
-  //   min-height: 0;
-  //   padding-top: 15px;
-  //   // z-index: 2;
-  //
-  //   .orange__content {
-  //     // height: 200px;
-  //     width: 100%;
-  //
-  //     .menu__item {
-  //
-  //     }
-  //   }
-  // }
-  //
-  // .nav__yellow {
-  //   background-color: $oc-yellow-5;
-  //   height: 0;
-  //   padding-top: 15px;
-  //   // z-index: 1;
-  // }
-  //
-  // .nav__blue, .nav__orange, .nav__yellow {
-  //   // position: absolute;
-  //   // top: 0;
-  //   width: inherit;
-  //   // box-shadow: 0px -1px 5px 0 $oc-black;
-  //
-  //   :after {
-  //     content:"";
-  //     position:absolute;
-  //     width:100%;
-  //     bottom:1px;
-  //     z-index:-1;
-  //     transform:scale(1);
-  //     box-shadow: 0px 0px 8px 2px #000000;
-  //   }
-  // }
+  .auth__nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      font-family: "Source-Sans-Pro-SemiBold";
+      margin: .6rem 1rem;
+      padding: .6rem 1rem;
+      border: 1.5px solid $oc-indigo-7;
+      color: $oc-indigo-7;
+      border-radius: 5px;
+      transition: all .2s ease;
+
+      &.router-link-active {
+        text-decoration: underline;
+      }
+
+      &:hover {
+        background: $oc-indigo-7;
+        color: white;
+      }
+    }
+  }
 }
