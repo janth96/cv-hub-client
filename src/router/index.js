@@ -11,26 +11,41 @@ const routes = [
     path: "/register",
     name: "register",
     component: Register,
+    meta: {
+      requiresAuth: false
+    }
   },
   {
     path: "/login",
     name: "login",
     component: Login,
+    meta: {
+      requiresAuth: false
+    }
   },
   {
     path: "/account",
     name: "account",
     component: Account,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: "/logout",
     name: "logout",
     component: Logout,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: "/",
     name: "home",
     component: HelloWorld,
+    meta: {
+      requiresAuth: false
+    }
   },
 ]
 
