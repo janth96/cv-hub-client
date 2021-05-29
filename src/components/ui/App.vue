@@ -39,7 +39,7 @@ export default {
         return
       }
       //TODO change second condition to check if page requires user to be logged in
-      if(from.name == "login" && to.name == "home") {
+      if(from.name == "login" && to.meta.requiresAuth == true) {
         this.transitionName = "login"
         return
       }
