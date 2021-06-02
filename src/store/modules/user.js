@@ -14,11 +14,10 @@ export default {
     },
   },
   actions: {
-    getUser({ state, commit }) {
+    getUser({ commit }) {
 
       // Reset store
       commit("SET_USER", null)
-      axios.defaults.headers.common["Authorization"] = "Bearer " + state.token
 
       return new Promise((resolve, reject) => {
         axios.get('/me')

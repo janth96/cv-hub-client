@@ -2,8 +2,28 @@ import { createApp } from 'vue'
 import App from './components/ui/App.vue'
 import store from "./store/store"
 import router from "./router"
+import axios from "axios/index"
 import "./assets/sass/app.scss"
 
+
+// Request interceptor
+axios.interceptors.request.use(function(config) {
+    // Authorization token if available
+    let token = localStorage.getItem('token');
+    if (token) {
+        config.headers.Authorization = 'Bearer ' + token;
+    }
+
+    // Default content type
+    config.headers['Content-Type'] = 'application/json';
+
+    return config;
+}, function(err) {
+    return Promise.reject(err);
+});
+
+
+// Navigation guards
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     // this route requires auth, check if logged in
