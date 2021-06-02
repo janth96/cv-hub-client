@@ -113,18 +113,20 @@ export default {
       }).catch(error => {
 
         // In case email has already been taken, notify user with link to login
-        if(error.response.data.errors.email == "The email has already been taken.") {
-          this.$store.commit("SET_TOAST", {
-            heading: "Account already exists",
-            type: "loading",
-            content: "",
-            to: {
-              name: "login",
-              params: {
-                email: this.email
+        if(error.response.data.errors.hasOwnProperty("email")) {
+          if(error.response.data.errors.email == "The email has already been taken.") {
+            this.$store.commit("SET_TOAST", {
+              heading: "Account already exists",
+              type: "loading",
+              content: "",
+              to: {
+                name: "login",
+                params: {
+                  email: this.email
+                }
               }
-            }
-          })
+            })
+          }
         }
 
         // Else, show errors
