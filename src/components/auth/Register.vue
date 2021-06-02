@@ -111,9 +111,10 @@ export default {
         })
 
       }).catch(error => {
+        console.log(error.response.data);
 
         // In case email has already been taken, notify user with link to login
-        if(error.response.data.errors.hasOwnProperty("email")) {
+        if(error.response) {
           if(error.response.data.errors.email == "The email has already been taken.") {
             this.$store.commit("SET_TOAST", {
               heading: "Account already exists",
