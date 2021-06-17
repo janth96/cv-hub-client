@@ -37,9 +37,12 @@ export default {
   data() {
     return {
       show: false,
-      email: this.$route.params['email'] || "",
-      // email: this.$route.params['email'] || "e@e.e",
-      password: "",
+      // email: this.$route.params['email'] || "",
+      // // email: this.$route.params['email'] || "e@e.e",
+      // password: "",
+
+      email: "e@e.e",
+      password: "1234567890",
       loginButtonDisabled: false,
     }
   },

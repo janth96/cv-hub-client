@@ -66,14 +66,14 @@ export default {
   data() {
     return {
       show: false,
-      // name: "test",
-      // email: "e@e.e",
-      // password: "1234567890",
-      // confirmPassword: "1234567890",
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
+      name: "test",
+      email: "e@e.e",
+      password: "1234567890",
+      confirmPassword: "1234567890",
+      // name: "",
+      // email: "",
+      // password: "",
+      // confirmPassword: "",
     }
   },
   mounted() {
@@ -111,20 +111,23 @@ export default {
         })
 
       }).catch(error => {
+        console.log(error.response.data);
 
         // In case email has already been taken, notify user with link to login
-        if(error.response.data.errors.email == "The email has already been taken.") {
-          this.$store.commit("SET_TOAST", {
-            heading: "Account already exists",
-            type: "loading",
-            content: "",
-            to: {
-              name: "login",
-              params: {
-                email: this.email
+        if(error.response) {
+          if(error.response.data.errors.email == "The email has already been taken.") {
+            this.$store.commit("SET_TOAST", {
+              heading: "Account already exists",
+              type: "loading",
+              content: "",
+              to: {
+                name: "login",
+                params: {
+                  email: this.email
+                }
               }
-            }
-          })
+            })
+          }
         }
 
         // Else, show errors

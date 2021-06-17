@@ -4,11 +4,11 @@ import axios from 'axios'
 export default {
   state: {
     token: localStorage.getItem('token') || null,
-    user: null,
+    // user: null,
   },
   getters: {
     token: state => state.token,
-    user: state => state.user,
+    // user: state => state.user,
   },
   mutations: {
     SET_TOKEN (state, token) {
@@ -19,9 +19,9 @@ export default {
       localStorage.removeItem('token')
       state.token = null
     },
-    SET_USER (state, user) {
-      state.user = user
-    },
+    // SET_USER (state, user) {
+    //   state.user = user
+    // },
   },
   actions: {
     register(context, credentials) {
@@ -57,7 +57,9 @@ export default {
         .catch(error => {
           // Set errors and remove toast
           commit("RESET_TOAST")
-          commit('SET_ERRORS', {email: error.response.data.message})
+          if(error.response) {
+            commit('SET_ERRORS', {email: error.response.data.message})
+          }
           reject(error)
         })
       })
@@ -70,21 +72,21 @@ export default {
         }, 50)
       })
     },
-    getUser({ state, commit }) {
-
-      // Reset store
-      commit("SET_USER", null)
-      axios.defaults.headers.common["Authorization"] = "Bearer " + state.token
-
-      return new Promise((resolve, reject) => {
-        axios.get('/me')
-        .then(response => {
-          commit("SET_USER", response.data)
-          resolve()
-        }).catch(error => {
-          reject(error)
-        })
-      })
-    }
+    // getUser({ state, commit }) {
+    //
+    //   // Reset store
+    //   commit("SET_USER", null)
+    //   axios.defaults.headers.common["Authorization"] = "Bearer " + state.token
+    //
+    //   return new Promise((resolve, reject) => {
+    //     axios.get('/me')
+    //     .then(response => {
+    //       commit("SET_USER", response.data)
+    //       resolve()
+    //     }).catch(error => {
+    //       reject(error)
+    //     })
+    //   })
+    // }
   }
 }
