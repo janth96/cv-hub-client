@@ -20,9 +20,9 @@ export default {
       commit("SET_USER", null)
 
       return new Promise((resolve, reject) => {
-        axios.get('/me')
+        axios.get('/user')
         .then(response => {
-          commit("SET_USER", response.data)
+          commit("SET_USER", response.data.user)
           resolve()
         }).catch(() => {
           commit("SET_USER", false)
@@ -32,6 +32,22 @@ export default {
     },
     updateUser () {
 
+      console.log('u');
+      // commit("SET_USER", null)
+
+      return new Promise((resolve, reject) => {
+        axios.patch('/me', {
+          test: "testing"
+        })
+        .then(response => {
+          // commit("SET_USER", response.data)
+          console.log(response.data);
+          resolve()
+        }).catch(() => {
+          // commit("SET_USER", null)
+          reject()
+        })
+      })
     }
   }
 }

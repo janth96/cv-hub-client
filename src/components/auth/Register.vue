@@ -66,14 +66,14 @@ export default {
   data() {
     return {
       show: false,
-      // name: "test",
-      // email: "e@e.e",
-      // password: "1234567890",
-      // confirmPassword: "1234567890",
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
+      name: "test",
+      email: "e@e.e",
+      password: "1234567890",
+      confirmPassword: "1234567890",
+      // name: "",
+      // email: "",
+      // password: "",
+      // confirmPassword: "",
     }
   },
   mounted() {

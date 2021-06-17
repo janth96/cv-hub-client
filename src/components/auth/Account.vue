@@ -6,6 +6,11 @@
     <ul v-else>
       <li>Name: {{ user.name }}</li>
       <li>Email: {{ user.email }}</li>
+      <li>Job title: {{ user.job_title }}</li>
+      <li>Phone number: {{ user.phone_number }}</li>
+      <li>LinkedIn url: {{ user.linkedin_url }}</li>
+      <li>GitHub url: {{ user.github_url }}</li>
+      <li>Personal Website url: {{ user.website_url }}</li>
     </ul>
 
     <button type="button" name="button" @click="updateUser">update details</button>
@@ -21,7 +26,7 @@ export default {
     ...mapGetters(['user'])
   },
   methods: {
-    updateAccount() {
+    updateUser() {
       this.$store.dispatch('updateUser')
     }
   }
