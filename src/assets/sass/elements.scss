@@ -17,7 +17,7 @@ body {
 
 section {
   margin: 0 auto;
-  width: 90vw;
+  width: 65vw; // TODO change settings later
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -31,6 +31,8 @@ h1, h2, h3, h4 {
 a {
   text-decoration: none;
   color: inherit;
+  display: flex;
+  align-items: center;
 
   :hover {
     text-decoration: none;
@@ -39,6 +41,11 @@ a {
 
   :visited {
     color: inherit;
+  }
+
+  img {
+    height: .9rem;
+    margin-left: .2rem;
   }
 }
 

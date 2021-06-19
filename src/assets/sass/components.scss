@@ -40,3 +40,50 @@
     }
   }
 }
+
+
+.auth__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+
+.account__details {
+  width: 100%;
+  // background-color: yellow;
+  tr {
+    transition: all .2s ease;
+    td {
+      padding: 2rem 0;
+      border-top: 1px solid $oc-gray-4;
+
+      &:first-child {
+        font-size: 1.1rem;
+        font-weight: bold;
+        width: 30%;
+      }
+    }
+
+    &:first-child {
+      td {
+        border-top: none;
+      }
+    }
+
+    &:hover {
+      background: $oc-gray-0;
+    }
+  }
+
+  a {
+    color: $oc-blue-7;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

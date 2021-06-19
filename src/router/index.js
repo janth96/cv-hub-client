@@ -3,7 +3,7 @@ import store from "../store/store"
 import HelloWorld from "@/components/HelloWorld.vue"
 import Register from "@/components/auth/Register.vue"
 import Login from "@/components/auth/Login.vue"
-import Account from "@/components/auth/Account.vue"
+import Account from "@/components/account/Account.vue"
 import Logout from "@/components/auth/Logout.vue"
 
 const routes = [
