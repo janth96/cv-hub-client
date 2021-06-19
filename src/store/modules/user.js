@@ -30,24 +30,21 @@ export default {
         })
       })
     },
-    updateUser () {
+    updateUserDetails({ commit }, userDetails) {
 
-      console.log('u');
+      console.log(userDetails);
       // commit("SET_USER", null)
 
       return new Promise((resolve, reject) => {
-        axios.patch('/me', {
-          test: "testing"
-        })
+        axios.patch('/user', userDetails)
         .then(response => {
-          // commit("SET_USER", response.data)
-          console.log(response.data);
+          commit("SET_USER", response.data.user)
           resolve()
-        }).catch(() => {
-          // commit("SET_USER", null)
+        }).catch(error => {
+          commit("SET_ERRORS", error.response.data.errors)
           reject()
         })
       })
-    }
+    },
   }
 }
